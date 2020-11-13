@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Tp_TransportesRaffi.Models;
 
 namespace Tp_TransportesRaffi
 {
@@ -24,6 +26,9 @@ namespace Tp_TransportesRaffi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<TransportesRaffiContext>(Options =>
+            Options.UseSqlServer("Data Source=LAPTOP-MATI;Initial Catalog=TransportesRaffi;Integrated Security=True"));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -19,9 +19,14 @@ namespace Tp_TransportesRaffi.Models
         public string Modelo { get; set; }
         public int Anio { get; set; }
         public string Seguro { get; set; }
-        public int Tipo { get; set; }
-
-        public virtual Chofere IdchoferNavigation { get; set; }
+        public TipoVehiculo Tipo { get; set; }
+        public enum TipoVehiculo
+        {
+            MOTO,
+            CAMION,
+            UTILITARIO
+        }
+        public virtual Chofer IdchoferNavigation { get; set; }
         public virtual ICollection<Viaje> Viajes { get; set; }
     }
 }

@@ -1,0 +1,67 @@
+﻿@model Tp_TransportesRaffi.Models.Viaje
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<h1>Eliminar</h1>
+
+<h3>¿Esta seguro de que desea borrar este registro?</h3>
+<br />
+<div>
+    <h4>Viaje</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaHoraEntrega)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaHoraEntrega)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DomicilioEntrega)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DomicilioEntrega)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DescripcionPaquete)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DescripcionPaquete)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ValorViaje)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ValorViaje)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EstadoViaje)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EstadoViaje)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdclienteNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdclienteNavigation.Cuit)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdvehiculoNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdvehiculoNavigation.Patente)
+        </dd>
+    </dl>
+    <hr />
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <br />
+        <p></p>
+        <div>
+            <a class="btn btn-info btn-outline-light" asp-action="Index">Volver a Lista de Viaje</a>
+        </div>
+    </form>
+</div>

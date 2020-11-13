@@ -1,0 +1,9 @@
+.container{
+    width: 50%; margin-top: 50px;
+}
+
+#titulo{
+    margin-top: 5px;
+    margin-bottom: 35px;
+    font-family: Arial;
+}

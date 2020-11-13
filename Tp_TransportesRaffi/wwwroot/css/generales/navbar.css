@@ -1,0 +1,38 @@
+
+#navbar{
+    text-align: center;
+    margin-bottom: 20px;
+    padding-left:25%;
+    width:80%;
+}
+
+#navbardrop {
+    color: honeydew;
+    word-spacing: 15px;
+}
+
+#navitem{
+
+}
+
+#navitem:after {    
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background:white;
+    transition: width 0.6s ease 0s, left 0.6s ease 0s;
+    width: 0;
+}
+
+#navitem:hover:after { 
+    width: 100%; 
+    left: 0; 
+}
+
+#navitem:hover {
+    color: darkgray;
+}

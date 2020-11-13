@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace Tp_TransportesRaffi.Models
 {
-    public partial class Chofere
+    public partial class Chofer
     {
-        public Chofere()
+        public Chofer()
         {
             Vehiculos = new HashSet<Vehiculo>();
         }

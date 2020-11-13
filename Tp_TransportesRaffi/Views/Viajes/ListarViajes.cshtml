@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Tp_TransportesRaffi.Models.Viaje>
+
+<div class="main" id="main">
+    <div class="col-10">
+        <h2>Viajes Programados</h2>
+        <br />
+        <table class="table table-bordered table-striped" id="tabla">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Fecha de Viaje</th>
+                    <th>Cliente</th>
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Viaje v in Model)
+                {
+                    <tr>
+                        <td>@v.FechaHoraEntrega</td>
+                        <td>@v.IdclienteNavigation.Nombre</td>
+                        <td><a asp-area="" asp-controller="Viajes" asp-action="Edit" asp-route-id="@v.Id" title="Modificar Viaje"><i class="fa fa-edit" id="icono"></i></a></td>
+                        <td><a asp-area="" asp-controller="Viajes" asp-action="Delete" asp-route-id="@v.Id" title="Eliminar Viaje"><i class="fa fa-trash" id="icono"></i></a></td>
+                        <td>@v.EstadoViaje</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6">
+        <p></p>
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2" id="crearViaje">
+        <input type="button" id="pasarAFinalizado" value="Pasar a Finalizado" class="btn btn-outline-primary" />
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2" id="crearViaje">
+        <div>
+            <p id="crearViaje">
+                <a asp-action="Create" class="btn btn-outline-primary" title="Crear nuevo viaje">
+                    Crear
+                    nuevo viaje
+                </a>
+            </p>
+        </div>
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2" id="verHistorico">
+        <div>
+            <p id="verHistorico">
+                <a href="listaViajesHistoricos.html" class="btn btn-outline-primary"
+                   title="Ver lista de viajes terminados">Ver Historico</a>
+            </p>
+        </div>
+    </div>
+</div>

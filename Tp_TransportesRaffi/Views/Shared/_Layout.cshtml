@@ -3,41 +3,156 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Tp_TransportesRaffi</title>
+    <title>@ViewData["Title"] - Tp_NT1</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/generales/header.css" />
+    <link rel="stylesheet" href="~/css/generales/footer.css" />
+    <link rel="stylesheet" href="~/css/generales/navbar.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/vehiculos/listarVehiculos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Tp_TransportesRaffi</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="row">
+            <div class="col-2 col-sm-2 col-md-1 col-lg-1">
+                <img src="~/fotos/logo.png" class="img-thumbnail mx-auto d-block" alt="Logo" id="logo">
             </div>
-        </nav>
+            <div class="col-10">
+                <h2 id="tituloheader"><b>Transportes Raffi</b></h2>
+            </div>
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <div class=" col-12 align-content-center" id="navbar">
+                <nav class="navbar navbar-expand-sm bg-dark nav-pills navbar-dark justify-content-center">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                <i class="fa fa-paper-plane-o"></i>
+                                Viajes
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="" asp-controller="Viajes" asp-action="Create">
+                                    Crear
+                                    viaje
+                                </a>
+                                <a class="dropdown-item " href="../viajes/hojaDeRuta.html">
+                                    Ir a Hoja de
+                                    Ruta
+                                </a>
+                                <a class="dropdown-item" href="../viajes/listaViajesHistoricos.html">
+                                    Ver
+                                    Historicos
+                                </a>
+                                <a class="dropdown-item " asp-area="" asp-controller="Viajes" asp-action="ListarViajes">
+                                    Ver Viajes
+                                    Programados
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                                <i class="fa fa-fw fa-user"></i>
+                                Clientes
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="" asp-controller="Clientes" asp-action="Create">
+                                    Agregar nuevo
+                                    cliente
+                                </a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Clientes" asp-action="ListarClientes">
+                                    Listar Clientes
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                                <i class="fa fa-fw fa-truck"></i>
+                                Vehiculos
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="" asp-controller="Vehiculos" asp-action="Create">
+                                    Agregar nuevo
+                                    vehiculo
+                                </a>
+                                <a class="dropdown-item " asp-area="" asp-controller="Vehiculos" asp-action="Index">
+                                    Listar Vehiculos
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                                <i class="fa fa-fw fa-id-badge"></i>
+                                Choferes
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="" asp-controller="Choferes" asp-action="Create">
+                                    Agregar nuevo
+                                    chofer
+                                </a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Choferes" asp-action="ListarChoferes">
+                                    Listar Choferes
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - Tp_TransportesRaffi - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer>
+        <div class="row">
+            <div class="col-6" id="seccion">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 id="titulofooter"><b>Contactenos</b></h2>
+                    </div>
+                    <br />
+                    <div class="col-12">
+                        <ul id="lista">
+                            <li id="item">Wpp: 11-1111-1111 &nbsp;&nbsp;<i class="fa fa-whatsapp"></i></li>
+                            <li id="item">Mail: tRaffi@ort.com &nbsp;&nbsp;<i class="fa fa-envelope-o"></i></li>
+                            <li id="item">Tel: 0800-0000-0000 &nbsp;&nbsp;<i class="fa fa-phone"></i></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6" id="seccion2">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 id="titulofooter"><b>Sigannos</b></h2>
+                    </div>
+
+                    <div class="col-md-6 col-lg-6">
+                        <div>
+                            <ul id="lista">
+                                <li>
+                                    <a href="#"><i class="fa fa-twitter" id="redes"></i></a> &nbsp;&nbsp;Twitter
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-facebook" id="redes"></i></a> &nbsp;&nbsp;Facebook
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-12">
+                        <div>
+                            <ul id="lista">
+                                <li>
+                                    <a href="#"><i class="fa fa-google-plus" id="redes"></i></a>&nbsp;&nbsp; Google+
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-instagram" id="redes"></i></a> &nbsp;&nbsp;Instagram
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -45,4 +160,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
+
 </html>

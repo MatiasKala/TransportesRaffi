@@ -1,0 +1,50 @@
+﻿
+<div class="main" id="main">
+    <div class="col-10">
+        <h2>Clientes</h2>
+        <br />
+        <br />
+        <table class="table table-bordered table-striped" id="tabla">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Cuit</th>
+                    <th>Nombre</th>
+                    <th>Direccion</th>
+                    <th>Forma de Pago</th>
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Cliente c in ViewBag.clientes)
+                {
+                    <tr>
+                        <td>@c.Cuit</td>
+                        <td>@c.Nombre</td>
+                        <td>@c.Direccion</td>
+                        <td>@c.FormaPago</td>
+                        <td><a asp-area="" asp-controller="Clientes" asp-action="Edit" asp-route-id="@c.Id" title="Modificar Cliente"><i class="fa fa-edit" id="icono"></i></a></td>
+                        <td><a asp-area="" asp-controller="Clientes" asp-action="Delete" asp-route-id="@c.Id" title="Eliminar Cliente"><i class="fa fa-trash" id="icono"></i></a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-8">
+        <p></p>
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-3" id="crearCliente">
+        <p id="crearCliente">
+            <a asp-action="Create" class="btn btn-outline-primary" title="Agregar nuevo Cliente">
+                Agregar
+                nuevo Cliente
+            </a>
+        </p>
+    </div>
+</div>

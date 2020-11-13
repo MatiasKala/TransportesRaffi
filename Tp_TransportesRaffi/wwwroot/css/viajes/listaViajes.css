@@ -1,0 +1,42 @@
+.main {
+    margin: 100px 40px 40px 40px;
+}
+
+#main{
+    margin-top: 20px;
+}
+
+#titulo {
+    margin: 20px 100px 20px 100;
+}
+
+
+#tabla {
+    margin-top: 40px;
+    font-family:  Arial, sans-serif;
+    text-align: center;
+}
+
+#icono{
+    color: rgb(14, 14, 14);
+    font-size: 25px;
+}
+
+#icono:hover{
+    color: rgb(77, 176, 223);
+}
+
+#verHistorico{
+    text-align: center;
+    padding: 0px;
+}
+
+#crearViaje{
+    text-align: right;
+    padding: 0px;
+}
+
+#volverAviajes{
+    text-align: right;
+    padding: 0px
+}
