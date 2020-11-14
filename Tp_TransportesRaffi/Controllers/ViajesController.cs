@@ -32,6 +32,15 @@ namespace Tp_TransportesRaffi.Controllers
             return View(await transportesRaffiContext.ToListAsync());
         }
 
+        public async Task<IActionResult> ListarViajesHistoricosAsync()
+        {
+            var transportesRaffiContext = _context.Viajes.Include(v => v.IdclienteNavigation).
+                Include(v => v.IdvehiculoNavigation).
+                Where(e => e.EstadoViaje == Viaje.Estado.FINALIZADO);
+
+            return View(await transportesRaffiContext.ToListAsync());
+        }
+
         // GET: Viajes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -55,7 +64,7 @@ namespace Tp_TransportesRaffi.Controllers
         // GET: Viajes/Create
         public IActionResult Create()
         {
-            ViewData["Idcliente"] = new SelectList(_context.Clientes, "Id", "Cuit");
+            ViewData["Idcliente"] = new SelectList(_context.Clientes, "Id", "Nombre");
             ViewData["Idvehiculo"] = new SelectList(_context.Vehiculos, "Id", "Patente");
             return View();
         }
@@ -73,7 +82,7 @@ namespace Tp_TransportesRaffi.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Idcliente"] = new SelectList(_context.Clientes, "Id", "Cuit", viaje.Idcliente);
+            ViewData["Idcliente"] = new SelectList(_context.Clientes, "Id", "Nombre", viaje.Idcliente);
             ViewData["Idvehiculo"] = new SelectList(_context.Vehiculos, "Id", "Patente", viaje.Idvehiculo);
             return View(viaje);
         }
@@ -91,7 +100,7 @@ namespace Tp_TransportesRaffi.Controllers
             {
                 return NotFound();
             }
-            ViewData["Idcliente"] = new SelectList(_context.Clientes, "Id", "Cuit", viaje.Idcliente);
+            ViewData["Idcliente"] = new SelectList(_context.Clientes, "Id", "Nombre", viaje.Idcliente);
             ViewData["Idvehiculo"] = new SelectList(_context.Vehiculos, "Id", "Patente", viaje.Idvehiculo);
             return View(viaje);
         }
@@ -128,7 +137,7 @@ namespace Tp_TransportesRaffi.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Idcliente"] = new SelectList(_context.Clientes, "Id", "Cuit", viaje.Idcliente);
+            ViewData["Idcliente"] = new SelectList(_context.Clientes, "Id", "Nombre", viaje.Idcliente);
             ViewData["Idvehiculo"] = new SelectList(_context.Vehiculos, "Id", "Patente", viaje.Idvehiculo);
             return View(viaje);
         }

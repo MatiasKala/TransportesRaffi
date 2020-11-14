@@ -53,7 +53,7 @@ namespace Tp_TransportesRaffi.Controllers
         // GET: Vehiculos/Create
         public IActionResult Create()
         {
-            ViewData["Idchofer"] = new SelectList(_context.Choferes, "Id", "Cuit");
+            ViewData["Idchofer"] = new SelectList(_context.Choferes, "Id", "Nombre");
             return View();
         }
 
@@ -64,13 +64,14 @@ namespace Tp_TransportesRaffi.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Idchofer,Patente,Marca,Modelo,Anio,Seguro,Tipo")] Vehiculo vehiculo)
         {
+         
             if (ModelState.IsValid)
             {
                 _context.Add(vehiculo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Idchofer"] = new SelectList(_context.Choferes, "Id", "Cuit", vehiculo.Idchofer);
+            ViewData["Idchofer"] = new SelectList(_context.Choferes, "Id", "Nombre", vehiculo.Idchofer);
             return View(vehiculo);
         }
 
@@ -87,7 +88,7 @@ namespace Tp_TransportesRaffi.Controllers
             {
                 return NotFound();
             }
-            ViewData["Idchofer"] = new SelectList(_context.Choferes, "Id", "Cuit", vehiculo.Idchofer);
+            ViewData["Idchofer"] = new SelectList(_context.Choferes, "Id", "Nombre", vehiculo.Idchofer);
             return View(vehiculo);
         }
 
@@ -123,7 +124,7 @@ namespace Tp_TransportesRaffi.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Idchofer"] = new SelectList(_context.Choferes, "Id", "Cuit", vehiculo.Idchofer);
+            ViewData["Idchofer"] = new SelectList(_context.Choferes, "Id", "Nombre", vehiculo.Idchofer);
             return View(vehiculo);
         }
 

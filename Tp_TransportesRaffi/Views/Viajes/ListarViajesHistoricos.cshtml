@@ -9,21 +9,21 @@
                 <tr>
                     <th>Fecha de Viaje</th>
                     <th>Cliente</th>
+                    <th>Chofer</th>
                     <th>Modificar</th>
                     <th>Eliminar</th>
-                    <th>Estado</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (Viaje v in Model)
                 {
-                    <tr>
-                        <td>@v.FechaHoraEntrega</td>
-                        <td>@v.IdclienteNavigation.Nombre</td>
-                        <td><a asp-area="" asp-controller="Viajes" asp-action="Edit" asp-route-id="@v.Id" title="Modificar Viaje"><i class="fa fa-edit" id="icono"></i></a></td>
-                        <td><a asp-area="" asp-controller="Viajes" asp-action="Delete" asp-route-id="@v.Id" title="Eliminar Viaje"><i class="fa fa-trash" id="icono"></i></a></td>
-                        <td>@v.EstadoViaje</td>
-                    </tr>
+                <tr>
+                    <td>@v.FechaHoraEntrega</td>
+                    <td>@v.IdclienteNavigation.Nombre</td>
+                    <td>@v.IdvehiculoNavigation.IdchoferNavigation.Nombre</td>
+                    <td><a asp-area="" asp-controller="Viajes" asp-action="Edit" asp-route-id="@v.Id" title="Modificar Viaje"><i class="fa fa-edit" id="icono"></i></a></td>
+                    <td><a asp-area="" asp-controller="Viajes" asp-action="Delete" asp-route-id="@v.Id" title="Eliminar Viaje"><i class="fa fa-trash" id="icono"></i></a></td>
+                </tr>
                 }
 
             </tbody>
@@ -38,9 +38,6 @@
         <p></p>
     </div>
     <div class="col-sm-2 col-md-2 col-lg-2" id="crearViaje">
-        <input type="button" id="pasarAFinalizado" value="Pasar a Finalizado" class="btn btn-outline-primary" />
-    </div>
-    <div class="col-sm-2 col-md-2 col-lg-2" id="crearViaje">
         <div>
             <p id="crearViaje">
                 <a asp-action="Create" class="btn btn-outline-primary" title="Crear nuevo viaje">
@@ -50,11 +47,11 @@
             </p>
         </div>
     </div>
-    <div class="col-sm-2 col-md-2 col-lg-2" id="verHistorico">
+    <div class="col-sm-2 col-md-2 col-lg-2" id="verProgramados">
         <div>
-            <p id="verHistorico">
-                <a  asp-area="" asp-controller="Viajes" asp-action="ListarViajesHistoricos" class="btn btn-outline-primary"
-                   title="Ver lista de viajes terminados">Ver Historico</a>
+            <p id="verProgramados">
+                <a asp-area="" asp-controller="Viajes" asp-action="ListarViajes" class="btn btn-outline-primary"
+                   title="Ver lista de viajes Programados">Ver Viajes Programados</a>
             </p>
         </div>
     </div>
