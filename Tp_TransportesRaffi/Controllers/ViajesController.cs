@@ -41,6 +41,16 @@ namespace Tp_TransportesRaffi.Controllers
             return View(await transportesRaffiContext.ToListAsync());
         }
 
+        public async Task<IActionResult> HojaDeRuta()
+        {
+            var viajesDeHoy = _context.Viajes.Include(v => v.IdclienteNavigation).
+                                              Include(v => v.IdvehiculoNavigation).
+                                              ThenInclude(c => c.IdchoferNavigation).
+                                              Where(v => v.FechaHoraEntrega.Date == DateTime.Today);
+
+            return View(await viajesDeHoy.ToListAsync());
+        }
+
         // GET: Viajes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
