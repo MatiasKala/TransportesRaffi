@@ -15,18 +15,22 @@
                     <th>Patente de Vehiculo</th>
                     <th>Valor del Viaje</th>
                     <th>Estado del Viaje</th>
+                    <th>Pasar a En Transito</th>
+                    <th>Pasar a Finalizado</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (Viaje v in Model)
                 {
-                    <tr>
-                        <td>@v.IdclienteNavigation.Nombre</td>
-                        <td>@v.IdvehiculoNavigation.IdchoferNavigation.Nombre</td>
-                        <td>@v.IdvehiculoNavigation.Patente</td>
-                        <td>$@v.ValorViaje</td>
-                        <td>@v.EstadoViaje</td>
-                    </tr>
+                <tr>
+                    <td>@v.IdclienteNavigation.Nombre</td>
+                    <td>@v.IdvehiculoNavigation.IdchoferNavigation.Nombre</td>
+                    <td>@v.IdvehiculoNavigation.Patente</td>
+                    <td>$@v.ValorViaje</td>
+                    <td>@v.EstadoViaje</td>
+                    <td><a asp-area="" asp-controller="Viajes" asp-action="PasarAEnTransito" asp-route-id="@v.Id" title="Pasar A En Transito"><i class="fa fa-road" id="icono" style="font-size:large"></i></a></td>
+                    <td><a asp-area="" asp-controller="Viajes" asp-action="PasarAFinalizado" asp-route-id="@v.Id" title="Pasar A Finalizado"><i class="fa fa-check" id="icono" style="font-size:large"></i></a></td>
+                </tr>
                 }
 
             </tbody>
@@ -37,7 +41,7 @@
 <br />
 
 <div class="row">
-    <div class="col-5">
+    <div class="col-8">
         <p></p>
     </div>
     <div class="col-3" id="verProgramados" style="text-align:right">
@@ -47,8 +51,5 @@
                    title="Ver lista de viajes Programados">Ver Viajes Programados</a>
             </p>
         </div>
-    </div>
-    <div class="col-sm-2 col-md-2 col-lg-2" id="crearViaje">
-        <input type="button" id="pasarAFinalizado" value="Pasar a En Transito" class="btn btn-outline-primary" onclick="pasarAEnTransito()"/>
     </div>
 </div>

@@ -10,8 +10,7 @@
                     <th>Fecha de Viaje</th>
                     <th>Cliente</th>
                     <th>Chofer</th>
-                    <th>Modificar</th>
-                    <th>Eliminar</th>
+                    <th>Valor Viaje</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,8 +20,7 @@
                     <td>@v.FechaHoraEntrega</td>
                     <td>@v.IdclienteNavigation.Nombre</td>
                     <td>@v.IdvehiculoNavigation.IdchoferNavigation.Nombre</td>
-                    <td><a asp-area="" asp-controller="Viajes" asp-action="Edit" asp-route-id="@v.Id" title="Modificar Viaje"><i class="fa fa-edit" id="icono"></i></a></td>
-                    <td><a asp-area="" asp-controller="Viajes" asp-action="Delete" asp-route-id="@v.Id" title="Eliminar Viaje"><i class="fa fa-trash" id="icono"></i></a></td>
+                    <td>$@v.ValorViaje</td>
                 </tr>
                 }
 

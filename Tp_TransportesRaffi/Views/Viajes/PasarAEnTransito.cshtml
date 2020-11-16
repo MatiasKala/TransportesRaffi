@@ -1,0 +1,68 @@
+﻿@model Tp_TransportesRaffi.Models.Viaje
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Pasar a En Transito</h1>
+
+<h4>Viaje del @Model.FechaHoraEntrega.ToString("dd/MM/yyyy")</h4>
+<hr />
+<div class="row">
+    <br />
+    <div class="col-md-4">
+        <form asp-action="CambiarEstado">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group" hidden>
+                <label asp-for="Idcliente" class="control-label"></label>
+                <select asp-for="Idcliente" class="form-control" asp-items="ViewBag.Idcliente"></select>
+                <span asp-validation-for="Idcliente" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="Idvehiculo" class="control-label"></label>
+                <select asp-for="Idvehiculo" class="form-control" asp-items="ViewBag.Idvehiculo"></select>
+                <span asp-validation-for="Idvehiculo" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="FechaHoraEntrega" class="control-label"></label>
+                <input asp-for="FechaHoraEntrega" class="form-control" />
+                <span asp-validation-for="FechaHoraEntrega" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="DomicilioEntrega" class="control-label"></label>
+                <input asp-for="DomicilioEntrega" class="form-control" />
+                <span asp-validation-for="DomicilioEntrega" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="DescripcionPaquete" class="control-label"></label>
+                <input asp-for="DescripcionPaquete" class="form-control" />
+                <span asp-validation-for="DescripcionPaquete" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="ValorViaje" class="control-label"></label>
+                <input asp-for="ValorViaje" class="form-control" />
+                <span asp-validation-for="ValorViaje" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstadoViaje" class="control-label"></label>
+                <select asp-for="EstadoViaje" class="form-control">
+                    <option value="EN_TRANSITO" selected>EN_TRANSITO</option>
+                </select>
+                <span asp-validation-for="EstadoViaje" class="text-danger"></span>
+            </div>
+            <hr />
+            <div class="form-group">
+                <input type="submit" value="Paasar a En Transito" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-info btn-outline-light" asp-action="HojaDeRuta">Volver a Hoja de Ruta</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

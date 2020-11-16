@@ -27,7 +27,7 @@ namespace Tp_TransportesRaffi.Controllers
         {
             var transportesRaffiContext = _context.Viajes.Include(v => v.IdclienteNavigation).
                 Include(v => v.IdvehiculoNavigation).
-                Where(e => e.EstadoViaje != Viaje.Estado.FINALIZADO);
+                Where(e => e.EstadoViaje == Viaje.Estado.LISTO);
 
             return View(await transportesRaffiContext.ToListAsync());
         }
@@ -36,6 +36,7 @@ namespace Tp_TransportesRaffi.Controllers
         {
             var transportesRaffiContext = _context.Viajes.Include(v => v.IdclienteNavigation).
                 Include(v => v.IdvehiculoNavigation).
+                ThenInclude(c => c.IdchoferNavigation).
                 Where(e => e.EstadoViaje == Viaje.Estado.FINALIZADO);
 
             return View(await transportesRaffiContext.ToListAsync());
@@ -50,6 +51,81 @@ namespace Tp_TransportesRaffi.Controllers
 
             return View(await viajesDeHoy.ToListAsync());
         }
+
+        // GET: Viajes/PasarAEnTransito/5
+        public async Task<IActionResult> PasarAEnTransito(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var viaje = await _context.Viajes.FindAsync(id);
+            if (viaje == null)
+            {
+                return NotFound();
+            }
+            ViewData["Idcliente"] = new SelectList(_context.Clientes, "Id", "Nombre", viaje.Idcliente);
+            ViewData["Idvehiculo"] = new SelectList(_context.Vehiculos, "Id", "Patente", viaje.Idvehiculo);
+            return View(viaje);
+        }
+
+        // GET: Viajes/PasarAEnTransito/5
+        public async Task<IActionResult> PasarAFinalizado(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var viaje = await _context.Viajes.FindAsync(id);
+            if (viaje == null)
+            {
+                return NotFound();
+            }
+            ViewData["Idcliente"] = new SelectList(_context.Clientes, "Id", "Nombre", viaje.Idcliente);
+            ViewData["Idvehiculo"] = new SelectList(_context.Vehiculos, "Id", "Patente", viaje.Idvehiculo);
+            return View(viaje);
+        }
+
+        // POST: Viajes/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CambiarEstado(int id, [Bind("Id,Idcliente,Idvehiculo,FechaHoraEntrega,DomicilioEntrega,DescripcionPaquete,ValorViaje,EstadoViaje")] Viaje viaje)
+        {
+            if (id != viaje.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(viaje);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ViajeExists(viaje.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction("HojaDeRuta");
+            }
+            ViewData["Idcliente"] = new SelectList(_context.Clientes, "Id", "Nombre", viaje.Idcliente);
+            ViewData["Idvehiculo"] = new SelectList(_context.Vehiculos, "Id", "Patente", viaje.Idvehiculo);
+            return RedirectToAction("HojaDeRuta");
+        }
+
+
 
         // GET: Viajes/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -71,6 +147,7 @@ namespace Tp_TransportesRaffi.Controllers
             return View(viaje);
         }
 
+        
         // GET: Viajes/Create
         public IActionResult Create()
         {
