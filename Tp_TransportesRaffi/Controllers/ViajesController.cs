@@ -47,7 +47,7 @@ namespace Tp_TransportesRaffi.Controllers
             var viajesDeHoy = _context.Viajes.Include(v => v.IdclienteNavigation).
                                               Include(v => v.IdvehiculoNavigation).
                                               ThenInclude(c => c.IdchoferNavigation).
-                                              Where(v => v.FechaHoraEntrega.Date == DateTime.Today);
+                                              Where(v => v.FechaHoraEntrega.Date == DateTime.Today && v.EstadoViaje!=Viaje.Estado.FINALIZADO);
 
             return View(await viajesDeHoy.ToListAsync());
         }
