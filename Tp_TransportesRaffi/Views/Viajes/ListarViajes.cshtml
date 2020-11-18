@@ -1,8 +1,13 @@
 ﻿@model IEnumerable<Tp_TransportesRaffi.Models.Viaje>
 
+@{
+    ViewData["Title"] = "Viajes Programados";
+}
+
 <div class="main" id="main">
     <div class="col-10">
         <h2>Viajes Programados</h2>
+        <br />
         <br />
         <table class="table table-bordered table-striped" id="tabla">
             <thead class="thead-dark">
@@ -52,7 +57,7 @@
     <div class="col-sm-2 col-md-2 col-lg-2" id="verHistorico">
         <div>
             <p id="verHistorico">
-                <a  asp-area="" asp-controller="Viajes" asp-action="ListarViajesHistoricos" class="btn btn-outline-primary"
+                <a asp-area="" asp-controller="Viajes" asp-action="ListarViajesHistoricos" class="btn btn-outline-primary"
                    title="Ver lista de viajes terminados">Ver Historico</a>
             </p>
         </div>

@@ -1,5 +1,9 @@
 ﻿@model IEnumerable<Tp_TransportesRaffi.Models.Viaje>
 
+@{
+    ViewData["Title"] = "Viajes Historicos";
+}
+
 <div class="main" id="main">
     <div class="col-10">
         <h2>Viajes Historicos</h2>
@@ -16,12 +20,12 @@
             <tbody>
                 @foreach (Viaje v in Model)
                 {
-                <tr>
-                    <td>@v.FechaHoraEntrega</td>
-                    <td>@v.IdclienteNavigation.Nombre</td>
-                    <td>@v.IdvehiculoNavigation.IdchoferNavigation.Nombre</td>
-                    <td>$@v.ValorViaje</td>
-                </tr>
+                    <tr>
+                        <td>@v.FechaHoraEntrega</td>
+                        <td>@v.IdclienteNavigation.Nombre</td>
+                        <td>@v.IdvehiculoNavigation.IdchoferNavigation.Nombre</td>
+                        <td>$@v.ValorViaje</td>
+                    </tr>
                 }
 
             </tbody>

@@ -1,5 +1,9 @@
 ﻿@model IEnumerable<Tp_TransportesRaffi.Models.Viaje>
 
+@{
+    ViewData["Title"] = "Hoja de Ruta";
+}
+
 <script src="~/js/viajes/pasarAEnTransito.js"></script>
 
 <div class="main" id="main">
@@ -22,15 +26,15 @@
             <tbody>
                 @foreach (Viaje v in Model)
                 {
-                <tr>
-                    <td>@v.IdclienteNavigation.Nombre</td>
-                    <td>@v.IdvehiculoNavigation.IdchoferNavigation.Nombre</td>
-                    <td>@v.IdvehiculoNavigation.Patente</td>
-                    <td>$@v.ValorViaje</td>
-                    <td>@v.EstadoViaje</td>
-                    <td><a asp-area="" asp-controller="Viajes" asp-action="PasarAEnTransito" asp-route-id="@v.Id" title="Pasar A En Transito"><i class="fa fa-road" id="icono" style="font-size:large"></i></a></td>
-                    <td><a asp-area="" asp-controller="Viajes" asp-action="PasarAFinalizado" asp-route-id="@v.Id" title="Pasar A Finalizado"><i class="fa fa-check" id="icono" style="font-size:large"></i></a></td>
-                </tr>
+                    <tr>
+                        <td>@v.IdclienteNavigation.Nombre</td>
+                        <td>@v.IdvehiculoNavigation.IdchoferNavigation.Nombre</td>
+                        <td>@v.IdvehiculoNavigation.Patente</td>
+                        <td>$@v.ValorViaje</td>
+                        <td>@v.EstadoViaje</td>
+                        <td><a asp-area="" asp-controller="Viajes" asp-action="PasarAEnTransito" asp-route-id="@v.Id" title="Pasar A En Transito"><i class="fa fa-road" id="icono" style="font-size:large"></i></a></td>
+                        <td><a asp-area="" asp-controller="Viajes" asp-action="PasarAFinalizado" asp-route-id="@v.Id" title="Pasar A Finalizado"><i class="fa fa-check" id="icono" style="font-size:large"></i></a></td>
+                    </tr>
                 }
 
             </tbody>
