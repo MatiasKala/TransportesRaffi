@@ -7,7 +7,7 @@
 <script src="~/js/viajes/pasarAEnTransito.js"></script>
 
 <div class="main" id="main">
-    <div class="col-10">
+    <div class="col-12">
         <h2>Hoja de Ruta</h2>
         <h2>Dia  @DateTime.Now.ToString("dd/MM/yyyy")</h2>
         <br />
@@ -24,6 +24,7 @@
                 </tr>
             </thead>
             <tbody>
+                @*Html.Raw(v.EstadoViaje==Tp_TransportesRaffi.Models.Enums.EstadoViajeEnum.LISTO?"disabled='disabled'":"")*@
                 @foreach (Viaje v in Model)
                 {
                     <tr>
@@ -32,8 +33,27 @@
                         <td>@v.IdvehiculoNavigation.Patente</td>
                         <td>$@v.ValorViaje</td>
                         <td>@v.EstadoViaje</td>
-                        <td><a asp-area="" asp-controller="Viajes" asp-action="PasarAEnTransito" asp-route-id="@v.Id" title="Pasar A En Transito"><i class="fa fa-road" id="icono" style="font-size:large"></i></a></td>
-                        <td><a asp-area="" asp-controller="Viajes" asp-action="PasarAFinalizado" asp-route-id="@v.Id" title="Pasar A Finalizado"><i class="fa fa-check" id="icono" style="font-size:large"></i></a></td>
+                        <td>
+                            @if (v.EstadoViaje == Tp_TransportesRaffi.Models.Enums.EstadoViajeEnum.EN_TRANSITO)
+                            {
+                                <i class="fa fa-road" id="icono" style="font-size:large"></i>
+                            }
+                            else
+                            {
+                                <a asp-area="" asp-controller="Viajes" asp-action="PasarAEnTransito" asp-route-id="@v.Id" title="Pasar A En Transito"><i class="fa fa-road" id="icono" style="font-size:large"></i></a>
+                            }
+                        </td>
+                        <td>
+                            @if (v.EstadoViaje != Tp_TransportesRaffi.Models.Enums.EstadoViajeEnum.LISTO)
+                            {
+                                <a asp-area="" asp-controller="Viajes" asp-action="PasarAFinalizado" asp-route-id="@v.Id" title="Pasar A Finalizado"><i class="fa fa-check" id="icono" style="font-size:large"></i></a>
+
+                            }
+                            else
+                            {
+                                <i class="fa fa-check" id="icono" style="font-size:large"></i>
+                            }
+                        </td>
                     </tr>
                 }
 

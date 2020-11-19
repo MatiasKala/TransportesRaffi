@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Tp_TransportesRaffi.Models;
+using Tp_TransportesRaffi.Models.Enums;
 
 namespace Tp_TransportesRaffi.Controllers
 {
@@ -27,7 +28,7 @@ namespace Tp_TransportesRaffi.Controllers
         {
             var transportesRaffiContext = _context.Viajes.Include(v => v.IdclienteNavigation).
                 Include(v => v.IdvehiculoNavigation).
-                Where(e => e.EstadoViaje == Viaje.Estado.LISTO);
+                Where(e => e.EstadoViaje == EstadoViajeEnum.LISTO);
 
             return View(await transportesRaffiContext.ToListAsync());
         }
@@ -37,7 +38,7 @@ namespace Tp_TransportesRaffi.Controllers
             var transportesRaffiContext = _context.Viajes.Include(v => v.IdclienteNavigation).
                 Include(v => v.IdvehiculoNavigation).
                 ThenInclude(c => c.IdchoferNavigation).
-                Where(e => e.EstadoViaje == Viaje.Estado.FINALIZADO);
+                Where(e => e.EstadoViaje == EstadoViajeEnum.FINALIZADO);
 
             return View(await transportesRaffiContext.ToListAsync());
         }
@@ -47,8 +48,7 @@ namespace Tp_TransportesRaffi.Controllers
             var viajesDeHoy = _context.Viajes.Include(v => v.IdclienteNavigation).
                                               Include(v => v.IdvehiculoNavigation).
                                               ThenInclude(c => c.IdchoferNavigation).
-                                              Where(v => v.FechaHoraEntrega.Date == DateTime.Today && v.EstadoViaje!=Viaje.Estado.FINALIZADO);
-
+                                              Where(v => v.FechaHoraEntrega.Date == DateTime.Today && v.EstadoViaje!=EstadoViajeEnum.FINALIZADO);
             return View(await viajesDeHoy.ToListAsync());
         }
 
