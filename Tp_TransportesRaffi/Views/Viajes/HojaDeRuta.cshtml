@@ -14,8 +14,8 @@
         <table class="table table-bordered table-striped" id="tabla">
             <thead class="thead-dark">
                 <tr>
-                    <th>Cliente</th>
-                    <th>Chofer</th>
+                    <th>Nombre del Cliente</th>
+                    <th>Nombre del Chofer</th>
                     <th>Patente de Vehiculo</th>
                     <th>Valor del Viaje</th>
                     <th>Estado del Viaje</th>
@@ -65,14 +65,14 @@
 <br />
 
 <div class="row">
-    <div class="col-8">
+    <div class="col-8" style="margin-left:32px">
         <p></p>
     </div>
-    <div class="col-3" id="verProgramados" style="text-align:right">
+    <div class="col-3" id="verProgramados" style="padding-right:11px ; text-align:right"  >
         <div>
             <p id="verProgramados">
                 <a asp-area="" asp-controller="Viajes" asp-action="ListarViajes" class="btn btn-outline-primary"
-                   title="Ver lista de viajes Programados">Ver Viajes Programados</a>
+                   title="Ver lista de viajes Programados" style="padding-left:10px">Ver Viajes Programados</a>
             </p>
         </div>
     </div>

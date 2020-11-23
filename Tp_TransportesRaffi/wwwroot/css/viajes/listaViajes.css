@@ -12,7 +12,7 @@
 
 
 #tabla {
-    margin-top: 40px;
+    margin-top: 20px;
     font-family:  Arial, sans-serif;
     text-align: center;
 }
@@ -26,10 +26,10 @@
     color: rgb(77, 176, 223);
 }
 
-#verHistorico{
+/*#verHistorico{
     text-align: center;
     padding: 0px;
-}
+}*/
 
 #crearViaje{
     text-align: right;
