@@ -9,8 +9,8 @@
         <h2 style="margin-top:30px">Viajes Historicos</h2>
         <br />
         <div class="row">
-            <div class="col-4 " style="margin-top:1px"><p>Ingrese un cliente o chofer para filtrar los viajes</p></div>
-            <div class="col-5">
+            <div class="col-4" style="margin-top:1px"><p>Ingrese algun dato para filtrar los viajes</p></div>
+            <div class="col-4">
                 <input class="form-control" id="myInput" type="text" placeholder="Ej: Juan Perez">
             </div>
         </div>
@@ -72,8 +72,9 @@
     $(document).ready(function(){
      $("#myInput").on("keyup", function() {
      var value = $(this).val().toLowerCase();
-     $("#info tr").filter(function() {
-         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+         $("#info tr").filter(function () {
+             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+             
         });
      });
     });
